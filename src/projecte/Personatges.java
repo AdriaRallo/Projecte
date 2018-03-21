@@ -11,19 +11,36 @@ package projecte;
  */
 public class Personatges {
 
-    private String nom;
-    private String sexe;
-    private String raça;
-    private String tecniques;
-    private String habilitats;
-    private String transformacions;
-
     public String getNom() {
         return nom;
     }
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Sexe getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(Sexe sexe) {
+        this.sexe = sexe;
+    }
+
+    public String getFamilia() {
+        return familia;
+    }
+
+    public void setFamilia(String familia) {
+        this.familia = familia;
+    }
+
+    public Raça getRaça() {
+        return raça;
+    }
+
+    public void setRaça(Raça raça) {
+        this.raça = raça;
     }
 
     public String getHabilitats() {
@@ -34,30 +51,6 @@ public class Personatges {
         this.habilitats = habilitats;
     }
 
-    public String getSexe() {
-        return sexe;
-    }
-
-    public void setSexe(String sexe) {
-        this.sexe = sexe;
-    }
-
-    public String getRaça() {
-        return raça;
-    }
-
-    public void setRaça(String raça) {
-        this.raça = raça;
-    }
-
-    public String getTecniques() {
-        return tecniques;
-    }
-
-    public void setTecniques(String tecniques) {
-        this.tecniques = tecniques;
-    }
-
     public String getTransformacions() {
         return transformacions;
     }
@@ -66,4 +59,27 @@ public class Personatges {
         this.transformacions = transformacions;
     }
 
+    public boolean isOmplit() {
+        return Omplit;
+    }
+
+    public void setOmplit(boolean Omplit) {
+        this.Omplit = Omplit;
+    }
+
+    public enum Sexe {
+        HOME, DONA
+    };
+
+    public enum Raça {
+        SAIYAN, RAÇA_DE_FREEZER, NAMEKIÀ, HUMANA, ANDROIDE, MAJIN
+    };
+
+    private String nom;
+    private Sexe sexe;
+    private String familia;
+    private Raça raça;
+    private String habilitats;
+    private String transformacions;
+    private boolean Omplit = false;
 }
