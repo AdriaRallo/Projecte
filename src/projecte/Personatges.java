@@ -35,11 +35,11 @@ public class Personatges {
         this.familia = familia;
     }
 
-    public Raça getRaça() {
+    public String getRaça() {
         return raça;
     }
 
-    public void setRaça(Raça raça) {
+    public void setRaça(String raça) {
         this.raça = raça;
     }
 
@@ -71,14 +71,10 @@ public class Personatges {
         HOME, DONA
     };
 
-    public enum Raça {
-        SAIYAN, RAÇA_DE_FREEZER, NAMEKIÀ, HUMANA, ANDROIDE, MAJIN
-    };
-
     private String nom;
     private Sexe sexe;
     private String familia;
-    private Raça raça;
+    private String raça;
     private String habilitats;
     private String transformacions;
     private boolean Omplit = false;
