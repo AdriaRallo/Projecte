@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author rallito
  */
 public class Projecte {
-    
+
     private static final int MAX_PERSONATGES = 5;
     private static Personatges[] array = new Personatges[MAX_PERSONATGES];
     public static int opcio;
@@ -25,66 +25,66 @@ public class Projecte {
         do {
             demanarOpcio();
             tractarOpcio();
-            
+
         } while (!opcioFinal());
-        
+
     }
-    
+
     public static void inicialitzarVariables() {
         for (int i = 0; i < array.length; i++) {
             array[i] = new Personatges();
             array[i].setOmplit(false);
-            
+
         }
     }
-    
+
     public static void demanarOpcio() {
         Scanner ent = new Scanner(System.in);
-        
+
         System.out.println("1. Introduir Personatge.");
         System.out.println("2. Modificar Personatge.");
         System.out.println("3. Borrar Personatge.");
         System.out.println("4. Llistar tots els Personatges.");
         System.out.println("Sortir de la App.");
         opcio = ent.skip("[\r\n]*").nextInt();
-        
+
     }
-    
+
     public static void tractarOpcio() {
-        
+
         switch (opcio) {
-            
+
             case 0:
                 System.out.println("");
                 break;
-            
+
             case 1:
                 introduirPersonatge();
                 break;
-            
+
             case 2:
                 modificarPersonatge();
                 break;
-            
+
             case 3:
                 borrarPersonatge();
                 break;
-            
+
             case 4:
                 llistarPersonatges();
                 break;
-            
+
             default:
                 System.out.println("\nOpció Incorrecta!");
         }
     }
-    
+
     public static boolean opcioFinal() {
         return opcio == 0;
     }
-    
+
     public static void introduirPersonatge() {
-        
+
         Scanner ent = new Scanner(System.in);
 
         // Primer recorrem l'array fins trobar una casella no omplida o arribar al seu final
@@ -95,38 +95,47 @@ public class Projecte {
         if (i < array.length) {
             System.out.println("\nNom:");
             array[i].setNom(ent.skip("[\r\n]*").nextLine());
-            
+
             System.out.println("Raça:");
             array[i].setRaça(ent.skip("[\r\n]*").nextLine());
-            
+
             System.out.println("Familia:");
             array[i].setFamilia(ent.skip("[\r\n]*").nextLine());
-            
+
             System.out.println("Habilitats:");
             array[i].setHabilitats(ent.skip("[\r\n]*").nextLine());
-            
+
             System.out.println("Transformacions:");
             array[i].setTransformacions(ent.skip("[\r\n]*").nextLine());
-            
+
             char esHome;
-            
+
             do {
-                
+
                 System.out.println("És home o dona?(H/D):");
                 esHome = ent.skip("[\r\n]*").nextLine().toUpperCase().charAt(0);
-                
+
             } while (esHome != 'H' || esHome != 'D');
-            
+
             if (esHome == 'H') {
                 array[i].setSexe(Personatges.Sexe.HOME);
             } else {
                 array[i].setSexe(Personatges.Sexe.DONA);
             }
             array[i].setOmplit(true);
-            
+
         } else {
             System.out.println("\nNo en caben més, si vols, primer borra'n");
         }
     }
-    
+
+    public static void modificarPersonatge() {
+    }
+
+    public static void borrarPersonatge() {
+    }
+
+    public static void llistarPersonatges() {
+    }
+
 }
