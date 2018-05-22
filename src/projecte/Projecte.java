@@ -45,7 +45,7 @@ public class Projecte {
         System.out.println("2. Modificar Personatge.");
         System.out.println("3. Borrar Personatge.");
         System.out.println("4. Llistar tots els Personatges.");
-        System.out.println("Sortir de la App.");
+        System.out.println("0. Sortir de la App.");
         opcio = ent.skip("[\r\n]*").nextInt();
 
     }
@@ -92,41 +92,70 @@ public class Projecte {
         for (i = 0; i < array.length && array[i].isOmplit(); i++);
 
         // Si no hem arribat al final és per que hem trobat una casella buida (no omplida)
+        boolean nom_disponible = true;
+        String nom;
+
         if (i < array.length) {
+
             System.out.println("\nNom:");
-            array[i].setNom(ent.skip("[\r\n]*").nextLine());
+            nom = ent.nextLine().trim();
 
-            System.out.println("Raça:");
-            array[i].setRaça(ent.skip("[\r\n]*").nextLine());
+            for (int j = 0; j < array.length; j++) {
 
-            System.out.println("Familia:");
-            array[i].setFamilia(ent.skip("[\r\n]*").nextLine());
+                if (array[j].getNom().trim().equalsIgnoreCase(nom) && array[j].isOmplit()) {
+                    nom_disponible = false;
+                }
 
-            System.out.println("Habilitats:");
-            array[i].setHabilitats(ent.skip("[\r\n]*").nextLine());
-
-            System.out.println("Transformacions:");
-            array[i].setTransformacions(ent.skip("[\r\n]*").nextLine());
-
-            char esHome;
-
-            do {
-
-                System.out.println("És home o dona?(H/D):");
-                esHome = ent.skip("[\r\n]*").nextLine().toUpperCase().charAt(0);
-
-            } while (esHome != 'H' || esHome != 'D');
-
-            if (esHome == 'H') {
-                array[i].setSexe(Personatges.Sexe.HOME);
-            } else {
-                array[i].setSexe(Personatges.Sexe.DONA);
             }
-            array[i].setOmplit(true);
 
-        } else {
-            System.out.println("\nNo en caben més, si vols, primer borra'n");
+            if (i < array.length) {
+                
+                if (nom_disponible) {
+                    
+                    array[i].setNom(nom);
+
+                System.out.println("Raça:");
+                array[i].setRaça(ent.skip("[\r\n]*").nextLine());
+
+                System.out.println("Familia:");
+                array[i].setFamilia(ent.skip("[\r\n]*").nextLine());
+
+                System.out.println("Habilitats:");
+                array[i].setHabilitats(ent.skip("[\r\n]*").nextLine());
+
+                System.out.println("Transformacions:");
+                array[i].setTransformacions(ent.skip("[\r\n]*").nextLine());
+
+                char esHome;
+
+                do {
+
+                    System.out.println("És home o dona?(H/D):");
+                    esHome = ent.skip("[\r\n]*").nextLine().toUpperCase().charAt(0);
+
+                } while (esHome != 'H' && esHome != 'D');
+
+                if (esHome == 'H') {
+                    array[i].setSexe(Personatges.Sexe.HOME);
+                } else {
+                    array[i].setSexe(Personatges.Sexe.DONA);
+                }
+                array[i].setOmplit(true);
+                    
+                } else {
+                    
+                    System.out.println("El  nom ja esta fet servir");
+                    
+                }
+                
+                
+
+            } else {
+                System.out.println("\nNo en caben més, si vols, primer borra'n");
+            }
+
         }
+
     }
 
     public static void modificarPersonatge() {
@@ -136,6 +165,10 @@ public class Projecte {
     }
 
     public static void llistarPersonatges() {
+
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i].toString());
+        }
     }
 
 }

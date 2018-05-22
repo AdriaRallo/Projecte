@@ -71,11 +71,17 @@ public class Personatges {
         HOME, DONA
     };
 
-    private String nom;
+    private String nom="";
     private Sexe sexe;
-    private String familia;
-    private String raça;
-    private String habilitats;
-    private String transformacions;
+    private String familia="";
+    private String raça="";
+    private String habilitats="";
+    private String transformacions="";
     private boolean Omplit = false;
+
+    @Override
+    public String toString() {
+        return "Personatges{" + "Nom= " + nom + ", Familia= " + familia + ", Ra\u00e7a= " + raça + ", Habilitats= " + habilitats + ", Transformacions= " + transformacions + ", Sexe= " + sexe;
+    }
+        
 }
